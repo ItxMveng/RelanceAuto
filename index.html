@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RelanceAuto — Récupérez les clients que vous perdez sans le voir</title>
+<meta name="description" content="Système de relance automatique pour coachs et thérapeutes. Installation en 48h. 199€ une seule fois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2;--surface:#f9f8f5;--surface2:#fbfbf9;--border:rgba(40,37,29,.1);
+  --text:#28251d;--muted:#7a7974;--faint:#bab9b4;
+  --primary:#01696f;--primary-h:#0c4e54;--primary-hl:#cedcd8;
+  --success:#437a22;--success-hl:#d4dfcc;
+  --shadow-sm:0 1px 3px rgba(40,37,29,.08);--shadow-md:0 4px 16px rgba(40,37,29,.1);
+  --shadow-lg:0 16px 40px rgba(40,37,29,.12);
+  --r-sm:.375rem;--r-md:.5rem;--r-lg:.75rem;--r-xl:1rem;--r-full:9999px;
+  --font-d:'Instrument Serif',Georgia,serif;--font-b:'Inter','Helvetica Neue',sans-serif;
+  --t-xs:clamp(.75rem,.7rem + .25vw,.875rem);--t-sm:clamp(.875rem,.8rem + .35vw,1rem);
+  --t-base:clamp(1rem,.95rem + .25vw,1.125rem);--t-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+  --t-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--t-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;--s6:1.5rem;
+  --s8:2rem;--s10:2.5rem;--s12:3rem;--s16:4rem;--s20:5rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-b);font-size:var(--t-base);color:var(--text);background:var(--bg);line-height:1.65}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{font-family:var(--font-d);line-height:1.15;text-wrap:balance}
+p,li{text-wrap:pretty;max-width:68ch}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font:inherit;color:inherit;border:none;background:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:var(--s4) 0}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 var(--s6);display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:var(--s2);font-family:var(--font-d);font-size:var(--t-lg);font-weight:400}
+.logo-icon{width:36px;height:36px;background:var(--primary);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center}
+.logo-icon svg{stroke:#fff}
+.nav-cta{background:var(--primary);color:#fff;padding:.5rem var(--s5);border-radius:var(--r-full);font-size:var(--t-sm);font-weight:600;transition:background .18s}
+.nav-cta:hover{background:var(--primary-h)}
+
+/* HERO */
+.hero{padding:clamp(var(--s12),8vw,var(--s20)) 0 clamp(var(--s10),6vw,var(--s16));text-align:center}
+.hero-tag{display:inline-flex;align-items:center;gap:var(--s2);padding:var(--s2) var(--s4);background:var(--primary-hl);color:var(--primary);border-radius:var(--r-full);font-size:var(--t-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--s6)}
+.hero h1{font-size:var(--t-2xl);margin-bottom:var(--s5);max-width:16ch;margin-left:auto;margin-right:auto}
+.hero h1 em{color:var(--primary);font-style:italic}
+.hero p{font-size:var(--t-lg);color:var(--muted);max-width:52ch;margin:0 auto var(--s8)}
+.hero-btns{display:flex;gap:var(--s3);justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--primary);color:#fff;padding:.85rem var(--s8);border-radius:var(--r-full);font-size:var(--t-base);font-weight:600;transition:background .18s,transform .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(1,105,111,.25)}
+.btn-primary:hover{background:var(--primary-h);transform:translateY(-2px);box-shadow:0 8px 24px rgba(1,105,111,.3)}
+.btn-ghost{background:transparent;color:var(--text);padding:.85rem var(--s6);border-radius:var(--r-full);font-size:var(--t-base);font-weight:500;border:1.5px solid var(--border);transition:all .18s}
+.btn-ghost:hover{background:var(--surface2);border-color:rgba(40,37,29,.2)}
+.hero-social{display:flex;align-items:center;justify-content:center;gap:var(--s6);margin-top:var(--s10);flex-wrap:wrap}
+.social-stat{text-align:center}
+.social-stat .num{font-family:var(--font-d);font-size:var(--t-xl);color:var(--primary)}
+.social-stat .label{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s1)}
+
+/* SECTIONS */
+section{padding:clamp(var(--s10),6vw,var(--s20)) 0}
+.container{max-width:900px;margin:0 auto;padding:0 var(--s6)}
+.section-tag{font-size:var(--t-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:var(--s3)}
+.section-title{font-size:var(--t-xl);margin-bottom:var(--s4)}
+.section-desc{color:var(--muted);margin-bottom:var(--s8)}
+
+/* PROBLEM */
+.problem{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:start}
+.problem-text p{color:var(--muted);margin-bottom:var(--s4)}
+.loss-box{background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--s6);box-shadow:var(--shadow-md)}
+.loss-box h3{font-size:var(--t-lg);margin-bottom:var(--s4)}
+.loss-row{display:flex;align-items:center;justify-content:space-between;padding:var(--s3) 0;border-bottom:1px solid var(--border);font-size:var(--t-sm)}
+.loss-row:last-of-type{border:none;font-weight:700;color:var(--primary);font-size:var(--t-base)}
+.loss-val{font-weight:700;color:var(--text)}
+.loss-total{background:var(--primary-hl);border-radius:var(--r-lg);padding:var(--s3) var(--s4);text-align:center;margin-top:var(--s4)}
+.loss-total .amount{font-family:var(--font-d);font-size:var(--t-xl);color:var(--primary)}
+.loss-total .label{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s1)}
+
+/* HOW IT WORKS */
+.steps{display:flex;flex-direction:column;gap:var(--s6);margin-top:var(--s8)}
+.step{display:grid;grid-template-columns:48px 1fr;gap:var(--s5);position:relative}
+.step:not(:last-child)::before{content:'';position:absolute;left:23px;top:56px;bottom:-24px;width:2px;background:var(--border)}
+.step-num{width:48px;height:48px;border-radius:var(--r-full);background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:var(--t-lg);flex-shrink:0;z-index:1;position:relative}
+.step-body h3{font-family:var(--font-d);font-size:var(--t-lg);margin-bottom:var(--s2)}
+.step-body p{color:var(--muted);font-size:var(--t-sm)}
+
+/* WHAT YOU GET */
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:var(--s4);margin-top:var(--s8)}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--s5);box-shadow:var(--shadow-sm);transition:box-shadow .18s,transform .18s}
+.feature:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:var(--r-md);background:var(--primary-hl);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s3);font-size:1.3rem}
+.feature h3{font-size:var(--t-sm);font-weight:700;margin-bottom:var(--s2)}
+.feature p{font-size:var(--t-xs);color:var(--muted)}
+
+/* PRICING */
+.pricing{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pricing-card{max-width:480px;margin:var(--s8) auto 0;background:#fff;border:2px solid var(--primary);border-radius:var(--r-xl);padding:var(--s8);box-shadow:var(--shadow-lg);text-align:center;position:relative}
+.pricing-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:var(--s1) var(--s5);border-radius:var(--r-full);font-size:var(--t-xs);font-weight:700;white-space:nowrap}
+.pricing-name{font-size:var(--t-sm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:var(--s4)}
+.pricing-price{font-family:var(--font-d);font-size:clamp(3rem,5vw,4.5rem);color:var(--primary);line-height:1}
+.pricing-unit{font-size:var(--t-sm);color:var(--muted);margin-bottom:var(--s5)}
+.pricing-features{list-style:none;text-align:left;margin:var(--s6) 0;display:flex;flex-direction:column;gap:var(--s3)}
+.pricing-features li{display:flex;align-items:flex-start;gap:var(--s3);font-size:var(--t-sm)}
+.pricing-features li::before{content:'✓';color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px}
+.pricing-cta{width:100%;background:var(--primary);color:#fff;padding:var(--s4);border-radius:var(--r-full);font-size:var(--t-base);font-weight:700;transition:background .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(1,105,111,.2);margin-top:var(--s4)}
+.pricing-cta:hover{background:var(--primary-h);box-shadow:0 8px 24px rgba(1,105,111,.3)}
+.pricing-note{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s3)}
+
+/* FOR WHO */
+.who-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:var(--s3);margin-top:var(--s8)}
+.who-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--s4);text-align:center;font-size:var(--t-sm)}
+.who-icon{font-size:1.8rem;margin-bottom:var(--s2)}
+
+/* CTA FINAL */
+.cta-section{background:var(--primary);color:#fff;padding:clamp(var(--s12),6vw,var(--s20)) 0;text-align:center}
+.cta-section h2{font-size:var(--t-xl);margin-bottom:var(--s4);color:#fff}
+.cta-section p{color:rgba(255,255,255,.8);margin:0 auto var(--s8);font-size:var(--t-lg)}
+.btn-white{background:#fff;color:var(--primary);padding:.85rem var(--s8);border-radius:var(--r-full);font-size:var(--t-base);font-weight:700;transition:all .18s;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-white:hover{background:var(--primary-hl);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;font-size:var(--t-xs);color:var(--muted)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .problem-grid{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(2rem,7vw,3rem)}
+  .nav-cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.18 19.79 19.79 0 01.03 4.6 2 2 0 012 2.46h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+      </div>
+      RelanceAuto
+    </div>
+    <a href="#pricing" class="nav-cta">Démarrer — 199€</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-tag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
+      Pour coachs & thérapeutes
+    </div>
+    <h1>Arrêtez de perdre des clients <em>sans le savoir</em></h1>
+    <p>Chaque semaine, des personnes vous contactent, n'obtiennent pas de réponse rapide, et vont voir quelqu'un d'autre. Je mets fin à ça en 48h.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn-primary">Réserver un appel gratuit de 15 min →</a>
+      <a href="#how" class="btn-ghost">Voir comment ça marche</a>
+    </div>
+    <div class="hero-social">
+      <div class="social-stat"><div class="num">48h</div><div class="label">Mise en place</div></div>
+      <div class="social-stat"><div class="num">199€</div><div class="label">Une seule fois</div></div>
+      <div class="social-stat"><div class="num">0€</div><div class="label">Par mois</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-tag">Le problème</div>
+    <div class="problem-grid">
+      <div class="problem-text">
+        <h2 class="section-title">Combien de clients perdez-vous chaque mois ?</h2>
+        <p>Vous êtes en séance toute la journée. Entre deux rendez-vous, quelqu'un vous envoie un message. Vous le voyez le soir. Vous répondez. Mais la personne a déjà pris rendez-vous ailleurs.</p>
+        <p>Et les autres, celles auxquelles vous ne répondez pas du tout ? Elles partent. Sans bruit. Sans vous le dire.</p>
+        <p>Sur 10 personnes qui vous contactent, 6 ne deviennent jamais clientes. Non par manque d'intérêt — mais parce qu'il n'y avait personne pour les accompagner vers un rendez-vous.</p>
+      </div>
+      <div class="loss-box">
+        <h3>Votre perte mensuelle estimée</h3>
+        <div class="loss-row"><span>Demandes par mois</span><span class="loss-val" id="req-val">8</span></div>
+        <div class="loss-row"><span>Taux de perte sans suivi</span><span class="loss-val">~60%</span></div>
+        <div class="loss-row"><span>Prospects perdus</span><span class="loss-val" id="lost-val">5</span></div>
+        <div class="loss-row"><span>Prix d'une séance</span><span class="loss-val" id="price-val">90€</span></div>
+        <div class="loss-row"><span><strong>Perte mensuelle estimée</strong></span><span class="loss-val" id="total-loss" style="color:var(--primary)"><strong>450€</strong></span></div>
+        <div class="loss-total">
+          <div class="amount" id="yearly-loss">5 400€</div>
+          <div class="label">de chiffre d'affaires manqué par an</div>
+        </div>
+        <div style="margin-top:var(--s4);font-size:var(--t-xs);color:var(--muted);text-align:center">
+          Modifiez les valeurs :<br>
+          <input type="range" min="2" max="30" value="8" id="req-slider" style="width:100%;margin-top:var(--s2)">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-tag">Comment ça marche</div>
+    <h2 class="section-title">Un système simple, actif 7j/7, même quand vous êtes en séance</h2>
+    <p class="section-desc">Dès qu'une personne vous contacte, le système prend le relais.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Quelqu'un vous contacte</h3>
+          <p>Via votre formulaire de contact, votre Gmail, ou votre site. Peu importe l'heure — le système détecte le message en temps réel.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Une réponse part en moins de 5 minutes</h3>
+          <p>Un email chaleureux, rédigé dans votre ton et signé de votre prénom, part automatiquement. Votre prospect a l'impression que c'est vous — parce que c'est votre voix, juste automatisée.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Si pas de réponse → relance douce à J+2</h3>
+          <p>Un message court, naturel, sans pression. Avec un lien pour réserver directement dans votre agenda.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Dernière relance à J+5, puis clôture</h3>
+          <p>Un ultime message bienveillant qui laisse la porte ouverte. Aucun prospect ne disparaît dans le silence.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>RDV pris → tout s'arrête automatiquement</h3>
+          <p>Dès qu'un rendez-vous est réservé via Calendly, les relances s'arrêtent. Votre prospect reçoit une confirmation et un rappel la veille.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-tag">Ce que vous obtenez</div>
+    <h2 class="section-title">Tout est inclus dans les 199€</h2>
+    <div class="features">
+      <div class="feature"><div class="feature-icon">⚡</div><h3>Système installé en 48h</h3><p>Connecté à votre Gmail, Calendly et formulaire existants. Rien à changer de votre côté.</p></div>
+      <div class="feature"><div class="feature-icon">✍️</div><h3>Emails écrits avec vous</h3><p>3 messages rédigés dans votre ton, votre style, votre chaleur. Vos prospects ne savent pas que c'est automatique.</p></div>
+      <div class="feature"><div class="feature-icon">📊</div><h3>Tableau de suivi Notion</h3><p>Vous voyez en temps réel qui est dans le pipeline, qui a été relancé, qui a pris RDV.</p></div>
+      <div class="feature"><div class="feature-icon">🔔</div><h3>Confirmation + rappel RDV</h3><p>Chaque prospect qui réserve reçoit une confirmation immédiate et un rappel automatique la veille.</p></div>
+      <div class="feature"><div class="feature-icon">🛡️</div><h3>Support 30 jours inclus</h3><p>Si quelque chose ne fonctionne pas, je réponds et je corrige. Sans frais supplémentaires.</p></div>
+      <div class="feature"><div class="feature-icon">0€</div><h3>Pas d'abonnement</h3><p>Vous payez une seule fois. Le système fonctionne ensuite indéfiniment sur vos outils gratuits.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-tag" style="text-align:center">Tarif</div>
+    <h2 class="section-title" style="text-align:center">Simple. Une seule fois.</h2>
+    <p class="section-desc" style="text-align:center;max-width:100%">Rentabilisé dès 1 client supplémentaire converti.</p>
+    <div class="pricing-card">
+      <div class="pricing-badge">✦ Offre de lancement</div>
+      <div class="pricing-name">RelanceAuto — Installation complète</div>
+      <div class="pricing-price">199€</div>
+      <div class="pricing-unit">paiement unique · pas d'abonnement</div>
+      <ul class="pricing-features">
+        <li>Système de relance automatique complet (J+0, J+2, J+5)</li>
+        <li>Connecté à votre Gmail, Calendly et formulaire de contact</li>
+        <li>3 emails personnalisés rédigés dans votre style</li>
+        <li>Confirmation automatique + rappel J-1 avant chaque RDV</li>
+        <li>Tableau de suivi des leads (Google Sheets ou Notion)</li>
+        <li>Installation et tests complets en 48h</li>
+        <li>Support technique pendant 30 jours</li>
+      </ul>
+      <a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" class="pricing-cta" id="cta-pricing">Réserver un appel découverte gratuit →</a>
+      <p class="pricing-note">L'appel de 15 min est gratuit et sans engagement. Si ce n'est pas adapté, on se dit au revoir sans pression.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section>
+  <div class="container">
+    <div class="section-tag">Pour qui</div>
+    <h2 class="section-title">Fait pour vous si vous êtes…</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="who-icon">🧭</div>Coach de vie</div>
+      <div class="who-card"><div class="who-icon">💼</div>Coach business</div>
+      <div class="who-card"><div class="who-icon">🌿</div>Thérapeute</div>
+      <div class="who-card"><div class="who-icon">🌬️</div>Sophrologue</div>
+      <div class="who-card"><div class="who-icon">🔮</div>Hypnothérapeute</div>
+      <div class="who-card"><div class="who-icon">🌸</div>Praticien bien-être</div>
+    </div>
+    <p style="margin-top:var(--s6);color:var(--muted);font-size:var(--t-sm)">Vous recevez au moins 3 demandes de contact par mois et vous savez que vous en perdez.</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Prêt à arrêter de perdre des clients ?</h2>
+    <p>15 minutes d'appel pour calculer ensemble ce que vous perdez chaque mois.</p>
+    <a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" class="btn-white">Réserver mon appel gratuit →</a>
+    <p style="color:rgba(255,255,255,.6);font-size:var(--t-xs);margin-top:var(--s4)">199€ · Installation 48h · Pas d'abonnement</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>RelanceAuto — Système de relance automatique pour coachs & thérapeutes · <a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" style="color:var(--primary)">Prendre contact</a></p>
+  </div>
+</footer>
+
+<script>
+// Slider calcul perte
+const slider = document.getElementById('req-slider');
+const reqVal = document.getElementById('req-val');
+const lostVal = document.getElementById('lost-val');
+const totalLoss = document.getElementById('total-loss');
+const yearlyLoss = document.getElementById('yearly-loss');
+const price = 90;
+
+function update() {
+  const req = parseInt(slider.value);
+  const lost = Math.round(req * 0.6);
+  const monthly = lost * price;
+  const yearly = monthly * 12;
+  reqVal.textContent = req;
+  lostVal.textContent = lost;
+  totalLoss.innerHTML = '<strong>' + monthly + '€</strong>';
+  yearlyLoss.textContent = yearly.toLocaleString('fr-FR') + '€';
+}
+
+slider && slider.addEventListener('input', update);
+</script>
+</body>
+</html>
