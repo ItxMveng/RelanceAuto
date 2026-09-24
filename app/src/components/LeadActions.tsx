@@ -8,7 +8,7 @@ export function LeadActions({ id, status, redirectAfterDelete }: { id: string; s
   const [busy, setBusy] = useState(false);
   const open = status === 'active' || status === 'completed';
 
-  async function act(action: 'booked' | 'stopped') {
+  async function act(action: 'booked' | 'stopped' | 'replied') {
     setBusy(true);
     await call(`/api/leads/${id}`, 'PATCH', { action });
     setBusy(false);
@@ -19,12 +19,13 @@ export function LeadActions({ id, status, redirectAfterDelete }: { id: string; s
     setBusy(true);
     await call(`/api/leads/${id}`, 'DELETE');
     setBusy(false);
-    if (redirectAfterDelete) router.push('/dashboard');
+    if (redirectAfterDelete) router.push('/dashboard/contacts');
     else router.refresh();
   }
   return (
     <div className="actions">
       {open && <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => act('booked')}>RDV pris</button>}
+      {status === 'active' && <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => act('replied')}>A répondu</button>}
       {status === 'active' && <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => act('stopped')}>Arrêter</button>}
       <button className="btn btn-danger btn-sm" disabled={busy} onClick={remove}>Supprimer</button>
     </div>

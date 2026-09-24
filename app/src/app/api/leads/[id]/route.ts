@@ -10,8 +10,14 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const ctx = await guard(req);
   if (isResponse(ctx)) return ctx;
   if (!UUID.test(params.id)) return fail('Contact introuvable', 404);
-  const action = (await readJson(req)).action;
-  if (action !== 'booked' && action !== 'stopped') return fail('Action invalide');
+  const body = await readJson(req);
+
+  if (typeof body.notes === 'string') {
+    const rows = await sql('update leads set notes = $3 where id = $1 and account_id = $2 returning id', [params.id, ctx.account.id, body.notes.slice(0, 4000)]);
+    return rows[0] ? ok() : fail('Contact introuvable', 404);
+  }
+  const action = body.action;
+  if (action !== 'booked' && action !== 'stopped' && action !== 'replied') return fail('Action invalide');
   const changed = await setLeadStatus(ctx.account.id, params.id, action);
   return changed ? ok() : fail('Contact introuvable ou déjà clôturé', 404);
 }

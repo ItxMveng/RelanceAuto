@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import './product.css';
 
 export const metadata: Metadata = {
   title: { default: 'RelanceAuto — Relances automatiques pour coachs et thérapeutes', template: '%s · RelanceAuto' },

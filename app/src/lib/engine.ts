@@ -1,5 +1,6 @@
 import { sql, Row } from './db';
 import { sendMail, smtpConfigured } from './mailer';
+import { humanizeSmtpError } from './providers';
 import { defaultSteps, firstName, render, Step, Tone, Vars } from './templates';
 
 export const TRIAL_LEAD_LIMIT = 10;
@@ -26,6 +27,14 @@ export function trialState(account: Row) {
 export function effectiveNow(account: Row): Date {
   const offset = account.send_mode === 'simulation' ? Number(account.sim_offset_minutes) || 0 : 0;
   return new Date(Date.now() + offset * 60_000);
+}
+
+/** Fenêtre d'envoi (heure de Paris) : hors plage, les messages attendent la prochaine ouverture. */
+export function inSendWindow(now: Date, fromHour: number, toHour: number): boolean {
+  const part = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', hourCycle: 'h23', timeZone: 'Europe/Paris' }).formatToParts(now).find((p) => p.type === 'hour');
+  const hour = Number(part?.value);
+  if (!Number.isFinite(hour) || !Number.isFinite(fromHour) || !Number.isFinite(toHour)) return true;
+  return hour >= fromHour && hour < toHour;
 }
 
 export function stepsOf(account: Row): Step[] {
@@ -88,7 +97,7 @@ async function finishLeadIfDone(leadId: string) {
   if (n === 0) await sql(`update leads set status = 'completed' where id = $1 and status = 'active'`, [leadId]);
 }
 
-export async function setLeadStatus(accountId: string, leadId: string, status: 'booked' | 'stopped' | 'unsubscribed') {
+export async function setLeadStatus(accountId: string, leadId: string, status: 'booked' | 'stopped' | 'unsubscribed' | 'replied') {
   const rows = await sql(
     `update leads set status = $3, booked_at = case when $3 = 'booked' then now() else booked_at end
      where id = $2 and account_id = $1 and status in ('active','completed') returning id`,
@@ -135,6 +144,10 @@ export async function tickAccount(accountId: string, limit = 50): Promise<{ sent
   if (!account || !trialState(account).active) return { sent: 0, failed: 0 };
   const now = effectiveNow(account);
 
+  if (account.send_mode === 'smtp' && !inSendWindow(now, Number(account.send_from_hour), Number(account.send_to_hour))) {
+    return { sent: 0, failed: 0 };
+  }
+
   const due = await sql(
     `select m.id, m.lead_id, m.subject, m.body, l.email, l.unsub_token, l.status as lead_status
        from messages m join leads l on l.id = m.lead_id
@@ -173,7 +186,7 @@ export async function tickAccount(accountId: string, limit = 50): Promise<{ sent
         await sql(`update messages set status = 'sent', delivery = 'smtp', sent_at = now() where id = $1`, [m.id]);
         sent++;
       } catch (e) {
-        await sql(`update messages set status = 'failed', error = $2 where id = $1`, [m.id, (e as Error).message.slice(0, 300)]);
+        await sql(`update messages set status = 'failed', error = $2 where id = $1`, [m.id, humanizeSmtpError(e).slice(0, 300)]);
         failed++;
       }
     } else {

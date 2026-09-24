@@ -65,3 +65,9 @@ create table if not exists rate_limits (
   hits integer not null,
   window_start timestamptz not null default now()
 );
+
+alter table leads add column if not exists notes text not null default '';
+alter table accounts add column if not exists send_from_hour integer not null default 8;
+alter table accounts add column if not exists send_to_hour integer not null default 20;
+alter table accounts add column if not exists onboarding_done boolean not null default false;
+create index if not exists messages_account_sent_idx on messages(account_id, sent_at);

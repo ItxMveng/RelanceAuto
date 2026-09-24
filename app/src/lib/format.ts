@@ -2,6 +2,7 @@ export const STATUS_LABEL: Record<string, string> = {
   active: 'Relance en cours',
   booked: 'RDV pris',
   completed: 'Séquence terminée',
+  replied: 'A répondu',
   stopped: 'Arrêté',
   unsubscribed: 'Désinscrit',
 };

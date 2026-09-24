@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { call } from './api';
 
-export function LeadForm() {
+export function LeadForm({ simulation = true }: { simulation?: boolean }) {
   const router = useRouter();
   const [tab, setTab] = useState<'one' | 'many'>('one');
   const [msg, setMsg] = useState<{ kind: 'err' | 'good'; text: string } | null>(null);
@@ -41,7 +41,8 @@ export function LeadForm() {
   return (
     <div className="card">
       <h2>Ajouter des contacts</h2>
-      <p className="sub">Dès l’ajout, le premier message est envoyé et les relances sont planifiées.</p>
+      <p className="sub">Dès l’ajout, le premier message part et les relances sont planifiées.</p>
+      {!simulation && <div className="msg info">Envoi réel actif : n’ajoutez que des personnes qui vous ont contacté ou qui ont accepté d’être recontactées.</div>}
       <div className="chips-row" role="tablist" aria-label="Mode d’ajout">
         <button type="button" role="tab" aria-selected={tab === 'one'} onClick={() => setTab('one')} style={tab === 'one' ? { borderColor: 'var(--primary)', color: 'var(--primary)' } : undefined}>Un contact</button>
         <button type="button" role="tab" aria-selected={tab === 'many'} onClick={() => setTab('many')} style={tab === 'many' ? { borderColor: 'var(--primary)', color: 'var(--primary)' } : undefined}>Importer une liste</button>

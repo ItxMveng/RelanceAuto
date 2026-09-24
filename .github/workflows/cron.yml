@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Envoyer les relances arrivées à échéance
         run: |
-          curl -fsS -m 60 --retry 2 "https://relanceauto-app.vercel.app/api/cron" || echo "Appel échoué (l'application dort peut-être) : sans conséquence, prochaine passe dans 15 min."
+          curl -fsS -m 60 --retry 2 "https://relance-auto-green.vercel.app/api/cron" || echo "Appel échoué (l'application dort peut-être) : sans conséquence, prochaine passe dans 15 min."

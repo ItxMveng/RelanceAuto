@@ -5,6 +5,7 @@ import { sql } from '@/lib/db';
 import { tickAccount } from '@/lib/engine';
 import { fmtDate, MSG_LABEL, STATUS_LABEL } from '@/lib/format';
 import { LeadActions } from '@/components/LeadActions';
+import { LeadNotes } from '@/components/LeadNotes';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Contact' };
@@ -20,7 +21,7 @@ export default async function LeadPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <p style={{ marginBottom: 10 }}><Link href="/dashboard">← Tous les contacts</Link></p>
+      <p style={{ marginBottom: 10 }}><Link href="/dashboard/contacts">← Tous les contacts</Link></p>
       <div className="page-head">
         <div>
           <h1>{lead.name}</h1>
@@ -53,6 +54,7 @@ export default async function LeadPage({ params }: { params: { id: string } }) {
           ))}
         </div>
       </div>
+      <LeadNotes id={lead.id} initial={lead.notes ?? ''} />
       <LeadActions id={lead.id} status={lead.status} redirectAfterDelete />
     </>
   );
