@@ -1,0 +1,14 @@
+name: Relances · passe planifiée
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Envoyer les relances arrivées à échéance
+        run: |
+          curl -fsS -m 60 --retry 2 "https://relanceauto-app.vercel.app/api/cron" || echo "Appel échoué (l'application dort peut-être) : sans conséquence, prochaine passe dans 15 min."
