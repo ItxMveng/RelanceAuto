@@ -4,14 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RelanceAuto — Récupérez les clients que vous perdez sans le voir</title>
-<meta name="description" content="Système de relance automatique pour coachs et thérapeutes. Installation en 48h. 199€ une seule fois.">
+<meta name="description" content="Système de relance automatique pour coachs et thérapeutes. Installation en 48h. 199€ une seule fois. Simulez vos relances et calculez votre rentabilité.">
+<meta name="theme-color" content="#01696f">
+<link rel="canonical" href="https://itxmveng.github.io/RelanceAuto/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="RelanceAuto — Récupérez les clients que vous perdez sans le voir">
+<meta property="og:description" content="Réponse en moins de 5 minutes, relances à J+2 et J+5, arrêt automatique dès qu'un rendez-vous est pris. 199€ une seule fois.">
+<meta property="og:url" content="https://itxmveng.github.io/RelanceAuto/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2301696f'/%3E%3Cpath d='M18 5L8 18h7l-1 9 10-13h-7z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"RelanceAuto","description":"Système de relance automatique pour coachs et thérapeutes : réponse rapide, relances J+2 et J+5, arrêt dès la prise de rendez-vous.","offers":{"@type":"Offer","price":"199","priceCurrency":"EUR"},"areaServed":"FR"}
+</script>
 <style>
 :root{
   --bg:#f7f6f2;--surface:#f9f8f5;--surface2:#fbfbf9;--border:rgba(40,37,29,.1);
-  --text:#28251d;--muted:#7a7974;--faint:#bab9b4;
+  --text:#28251d;--muted:#6b6a65;--faint:#bab9b4;
   --primary:#01696f;--primary-h:#0c4e54;--primary-hl:#cedcd8;
   --success:#437a22;--success-hl:#d4dfcc;
   --shadow-sm:0 1px 3px rgba(40,37,29,.08);--shadow-md:0 4px 16px rgba(40,37,29,.1);
@@ -32,9 +44,12 @@ h1,h2,h3{font-family:var(--font-d);line-height:1.15;text-wrap:balance}
 p,li{text-wrap:pretty;max-width:68ch}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font:inherit;color:inherit;border:none;background:none}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:1.35rem;height:1.35rem;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:var(--s4) 0}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.95);border-bottom:1px solid var(--border);padding:var(--s4) 0}
 .nav-inner{max-width:900px;margin:0 auto;padding:0 var(--s6);display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:var(--s2);font-family:var(--font-d);font-size:var(--t-lg);font-weight:400}
 .logo-icon{width:36px;height:36px;background:var(--primary);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center}
@@ -49,9 +64,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.92);backdrop-
 .hero h1 em{color:var(--primary);font-style:italic}
 .hero p{font-size:var(--t-lg);color:var(--muted);max-width:52ch;margin:0 auto var(--s8)}
 .hero-btns{display:flex;gap:var(--s3);justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--primary);color:#fff;padding:.85rem var(--s8);border-radius:var(--r-full);font-size:var(--t-base);font-weight:600;transition:background .18s,transform .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(1,105,111,.25)}
+.btn-primary{display:inline-block;background:var(--primary);color:#fff;padding:.85rem var(--s8);border-radius:var(--r-full);font-size:var(--t-base);font-weight:600;transition:background .18s,transform .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(1,105,111,.25)}
 .btn-primary:hover{background:var(--primary-h);transform:translateY(-2px);box-shadow:0 8px 24px rgba(1,105,111,.3)}
-.btn-ghost{background:transparent;color:var(--text);padding:.85rem var(--s6);border-radius:var(--r-full);font-size:var(--t-base);font-weight:500;border:1.5px solid var(--border);transition:all .18s}
+.btn-ghost{display:inline-block;background:transparent;color:var(--text);padding:.85rem var(--s6);border-radius:var(--r-full);font-size:var(--t-base);font-weight:500;border:1.5px solid var(--border);transition:all .18s}
 .btn-ghost:hover{background:var(--surface2);border-color:rgba(40,37,29,.2)}
 .hero-social{display:flex;align-items:center;justify-content:center;gap:var(--s6);margin-top:var(--s10);flex-wrap:wrap}
 .social-stat{text-align:center}
@@ -64,19 +79,26 @@ section{padding:clamp(var(--s10),6vw,var(--s20)) 0}
 .section-tag{font-size:var(--t-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:var(--s3)}
 .section-title{font-size:var(--t-xl);margin-bottom:var(--s4)}
 .section-desc{color:var(--muted);margin-bottom:var(--s8)}
+.alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 
-/* PROBLEM */
-.problem{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+/* PROBLEM + CALCULATEUR */
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:start}
 .problem-text p{color:var(--muted);margin-bottom:var(--s4)}
 .loss-box{background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--s6);box-shadow:var(--shadow-md)}
-.loss-box h3{font-size:var(--t-lg);margin-bottom:var(--s4)}
-.loss-row{display:flex;align-items:center;justify-content:space-between;padding:var(--s3) 0;border-bottom:1px solid var(--border);font-size:var(--t-sm)}
-.loss-row:last-of-type{border:none;font-weight:700;color:var(--primary);font-size:var(--t-base)}
-.loss-val{font-weight:700;color:var(--text)}
-.loss-total{background:var(--primary-hl);border-radius:var(--r-lg);padding:var(--s3) var(--s4);text-align:center;margin-top:var(--s4)}
+.loss-box h3{font-size:var(--t-lg);margin-bottom:var(--s2)}
+.loss-box .hint{font-size:var(--t-xs);color:var(--muted);margin-bottom:var(--s4)}
+.ctl{margin-bottom:var(--s4)}
+.ctl label{display:flex;justify-content:space-between;font-size:var(--t-sm);margin-bottom:var(--s1)}
+.ctl label b{color:var(--primary);font-variant-numeric:tabular-nums}
+.ctl input[type=range]{width:100%;accent-color:var(--primary)}
+.ctl small{display:block;color:var(--muted);font-size:var(--t-xs)}
+.results{border-top:1px solid var(--border);padding-top:var(--s4);margin-top:var(--s2)}
+.loss-row{display:flex;align-items:center;justify-content:space-between;padding:var(--s2) 0;font-size:var(--t-sm)}
+.loss-val{font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
+.loss-total{background:var(--primary-hl);border-radius:var(--r-lg);padding:var(--s3) var(--s4);text-align:center;margin-top:var(--s3)}
 .loss-total .amount{font-family:var(--font-d);font-size:var(--t-xl);color:var(--primary)}
-.loss-total .label{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s1)}
+.loss-total .label{font-size:var(--t-xs);color:#4a4a45;margin-top:var(--s1)}
+.disclaimer{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s3);text-align:center}
 
 /* HOW IT WORKS */
 .steps{display:flex;flex-direction:column;gap:var(--s6);margin-top:var(--s8)}
@@ -86,16 +108,34 @@ section{padding:clamp(var(--s10),6vw,var(--s20)) 0}
 .step-body h3{font-family:var(--font-d);font-size:var(--t-lg);margin-bottom:var(--s2)}
 .step-body p{color:var(--muted);font-size:var(--t-sm)}
 
+/* SIMULATEUR */
+.sim{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:var(--s6);margin-top:var(--s6);align-items:start}
+.sim-form{background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--s5);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:var(--s4)}
+.field label{display:block;font-size:var(--t-xs);font-weight:600;margin-bottom:var(--s1)}
+.field input,.field select{width:100%;padding:.6rem .75rem;border:1.5px solid var(--border);border-radius:var(--r-md);background:var(--surface2);font:inherit;font-size:var(--t-sm);color:var(--text)}
+.field input:focus,.field select:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px var(--primary-hl)}
+.tone{display:flex;gap:var(--s2)}
+.tone button{flex:1;padding:.5rem;border:1.5px solid var(--border);border-radius:var(--r-md);font-size:var(--t-xs);font-weight:600;background:var(--surface2)}
+.tone button[aria-pressed=true]{background:var(--primary);border-color:var(--primary);color:#fff}
+.timeline{display:flex;flex-direction:column;gap:var(--s4);position:relative}
+.msg{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+.msg-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);padding:var(--s3) var(--s4);background:var(--surface);border-bottom:1px solid var(--border)}
+.msg-when{font-size:var(--t-xs);font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em}
+.msg-subject{font-size:var(--t-xs);color:var(--muted)}
+.msg-body{padding:var(--s4);font-size:var(--t-sm);white-space:pre-line;color:var(--text)}
+.copy{font-size:var(--t-xs);font-weight:600;color:var(--primary);border:1.5px solid var(--primary-hl);border-radius:var(--r-full);padding:.25rem .8rem;white-space:nowrap}
+.copy:hover{background:var(--primary-hl)}
+.sim-note{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s3)}
+
 /* WHAT YOU GET */
 .features{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:var(--s4);margin-top:var(--s8)}
 .feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--s5);box-shadow:var(--shadow-sm);transition:box-shadow .18s,transform .18s}
 .feature:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
-.feature-icon{width:44px;height:44px;border-radius:var(--r-md);background:var(--primary-hl);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s3);font-size:1.3rem}
-.feature h3{font-size:var(--t-sm);font-weight:700;margin-bottom:var(--s2)}
+.feature-icon{width:44px;height:44px;border-radius:var(--r-md);background:var(--primary-hl);color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s3);font-weight:700;font-size:.9rem}
+.feature h3{font-size:var(--t-sm);font-weight:700;margin-bottom:var(--s2);font-family:var(--font-b)}
 .feature p{font-size:var(--t-xs);color:var(--muted)}
 
 /* PRICING */
-.pricing{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .pricing-card{max-width:480px;margin:var(--s8) auto 0;background:#fff;border:2px solid var(--primary);border-radius:var(--r-xl);padding:var(--s8);box-shadow:var(--shadow-lg);text-align:center;position:relative}
 .pricing-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:var(--s1) var(--s5);border-radius:var(--r-full);font-size:var(--t-xs);font-weight:700;white-space:nowrap}
 .pricing-name{font-size:var(--t-sm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:var(--s4)}
@@ -104,40 +144,68 @@ section{padding:clamp(var(--s10),6vw,var(--s20)) 0}
 .pricing-features{list-style:none;text-align:left;margin:var(--s6) 0;display:flex;flex-direction:column;gap:var(--s3)}
 .pricing-features li{display:flex;align-items:flex-start;gap:var(--s3);font-size:var(--t-sm)}
 .pricing-features li::before{content:'✓';color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px}
-.pricing-cta{width:100%;background:var(--primary);color:#fff;padding:var(--s4);border-radius:var(--r-full);font-size:var(--t-base);font-weight:700;transition:background .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(1,105,111,.2);margin-top:var(--s4)}
+.pricing-cta{display:block;width:100%;background:var(--primary);color:#fff;padding:var(--s4);border-radius:var(--r-full);font-size:var(--t-base);font-weight:700;transition:background .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(1,105,111,.2);margin-top:var(--s4)}
 .pricing-cta:hover{background:var(--primary-h);box-shadow:0 8px 24px rgba(1,105,111,.3)}
 .pricing-note{font-size:var(--t-xs);color:var(--muted);margin-top:var(--s3)}
 
 /* FOR WHO */
 .who-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:var(--s3);margin-top:var(--s8)}
 .who-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--s4);text-align:center;font-size:var(--t-sm)}
-.who-icon{font-size:1.8rem;margin-bottom:var(--s2)}
+.who-card .ico{width:1.8rem;height:1.8rem;color:var(--primary);margin:0 auto var(--s2)}
+
+/* FAQ */
+.faq{margin-top:var(--s6);display:flex;flex-direction:column;gap:var(--s3)}
+.faq details{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--s4) var(--s5)}
+.faq summary{cursor:pointer;font-weight:600;font-size:var(--t-sm);list-style:none;display:flex;justify-content:space-between;gap:var(--s4)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--primary);font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:'–'}
+.faq p{margin-top:var(--s3);color:var(--muted);font-size:var(--t-sm)}
 
 /* CTA FINAL */
 .cta-section{background:var(--primary);color:#fff;padding:clamp(var(--s12),6vw,var(--s20)) 0;text-align:center}
 .cta-section h2{font-size:var(--t-xl);margin-bottom:var(--s4);color:#fff}
-.cta-section p{color:rgba(255,255,255,.8);margin:0 auto var(--s8);font-size:var(--t-lg)}
-.btn-white{background:#fff;color:var(--primary);padding:.85rem var(--s8);border-radius:var(--r-full);font-size:var(--t-base);font-weight:700;transition:all .18s;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.cta-section p{color:rgba(255,255,255,.88);margin:0 auto var(--s8);font-size:var(--t-lg)}
+.btn-white{display:inline-block;background:#fff;color:var(--primary);padding:.85rem var(--s8);border-radius:var(--r-full);font-size:var(--t-base);font-weight:700;transition:all .18s;box-shadow:0 4px 20px rgba(0,0,0,.15)}
 .btn-white:hover{background:var(--primary-hl);transform:translateY(-2px)}
 
-/* FOOTER */
+/* FOOTER + CTA MOBILE */
 footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;font-size:var(--t-xs);color:var(--muted)}
-
-/* RESPONSIVE */
-@media(max-width:640px){
-  .problem-grid{grid-template-columns:1fr}
+.sticky-cta{display:none}
+@media(max-width:720px){
+  .problem-grid,.sim{grid-template-columns:1fr}
   .hero h1{font-size:clamp(2rem,7vw,3rem)}
   .nav-cta{display:none}
+  .sticky-cta{position:fixed;left:var(--s4);right:var(--s4);bottom:var(--s4);z-index:90;display:block;text-align:center;background:var(--primary);color:#fff;font-weight:700;padding:.9rem;border-radius:var(--r-full);box-shadow:0 8px 24px rgba(1,105,111,.4);transform:translateY(140%);transition:transform .25s}
+  .sticky-cta.show{transform:none}
+  footer{padding-bottom:5.5rem}
 }
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15v3M12 9v9M17 5v13"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.5 6-6.6"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M17.7 7.7a2.5 2.5 0 111.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1111 8H2"/><path d="M12.6 19.4A2 2 0 1014 16H2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></symbol>
+  </defs>
+</svg>
 
 <nav>
   <div class="nav-inner">
     <div class="logo">
       <div class="logo-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
           <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.18 19.79 19.79 0 01.03 4.6 2 2 0 012 2.46h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
         </svg>
       </div>
@@ -147,18 +215,19 @@ footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;
   </div>
 </nav>
 
+<main>
 <!-- HERO -->
 <div class="hero">
   <div class="container">
     <div class="hero-tag">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
-      Pour coachs & thérapeutes
+      <svg class="ico" style="width:12px;height:12px" aria-hidden="true"><use href="#i-zap"/></svg>
+      Pour coachs &amp; thérapeutes
     </div>
     <h1>Arrêtez de perdre des clients <em>sans le savoir</em></h1>
     <p>Chaque semaine, des personnes vous contactent, n'obtiennent pas de réponse rapide, et vont voir quelqu'un d'autre. Je mets fin à ça en 48h.</p>
     <div class="hero-btns">
-      <a href="#pricing" class="btn-primary">Réserver un appel gratuit de 15 min →</a>
-      <a href="#how" class="btn-ghost">Voir comment ça marche</a>
+      <a href="#simulateur" class="btn-primary">Voir les messages que recevrait votre prospect →</a>
+      <a href="#pricing" class="btn-ghost">Voir le tarif</a>
     </div>
     <div class="hero-social">
       <div class="social-stat"><div class="num">48h</div><div class="label">Mise en place</div></div>
@@ -168,8 +237,8 @@ footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="problem">
+<!-- PROBLEM + CALCULATEUR -->
+<section class="alt">
   <div class="container">
     <div class="section-tag">Le problème</div>
     <div class="problem-grid">
@@ -177,22 +246,24 @@ footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;
         <h2 class="section-title">Combien de clients perdez-vous chaque mois ?</h2>
         <p>Vous êtes en séance toute la journée. Entre deux rendez-vous, quelqu'un vous envoie un message. Vous le voyez le soir. Vous répondez. Mais la personne a déjà pris rendez-vous ailleurs.</p>
         <p>Et les autres, celles auxquelles vous ne répondez pas du tout ? Elles partent. Sans bruit. Sans vous le dire.</p>
-        <p>Sur 10 personnes qui vous contactent, 6 ne deviennent jamais clientes. Non par manque d'intérêt — mais parce qu'il n'y avait personne pour les accompagner vers un rendez-vous.</p>
+        <p>Sans suivi, une part importante des demandes ne débouche jamais sur un rendez-vous — non par manque d'intérêt, mais parce que personne n'a accompagné la personne jusqu'à la prise de rendez-vous. <strong>Cette part varie d'un cabinet à l'autre : ajustez les hypothèses ci-contre avec vos propres chiffres.</strong></p>
       </div>
       <div class="loss-box">
-        <h3>Votre perte mensuelle estimée</h3>
-        <div class="loss-row"><span>Demandes par mois</span><span class="loss-val" id="req-val">8</span></div>
-        <div class="loss-row"><span>Taux de perte sans suivi</span><span class="loss-val">~60%</span></div>
-        <div class="loss-row"><span>Prospects perdus</span><span class="loss-val" id="lost-val">5</span></div>
-        <div class="loss-row"><span>Prix d'une séance</span><span class="loss-val" id="price-val">90€</span></div>
-        <div class="loss-row"><span><strong>Perte mensuelle estimée</strong></span><span class="loss-val" id="total-loss" style="color:var(--primary)"><strong>450€</strong></span></div>
-        <div class="loss-total">
-          <div class="amount" id="yearly-loss">5 400€</div>
-          <div class="label">de chiffre d'affaires manqué par an</div>
-        </div>
-        <div style="margin-top:var(--s4);font-size:var(--t-xs);color:var(--muted);text-align:center">
-          Modifiez les valeurs :<br>
-          <input type="range" min="2" max="30" value="8" id="req-slider" style="width:100%;margin-top:var(--s2)">
+        <h3>Calculez votre rentabilité</h3>
+        <p class="hint">Hypothèses modifiables — vos chiffres réels valent mieux que les miens.</p>
+        <div class="ctl"><label for="c-req">Demandes reçues par mois <b id="v-req">8</b></label><input type="range" id="c-req" min="2" max="40" value="8"></div>
+        <div class="ctl"><label for="c-price">Prix d'une séance <b id="v-price">90 €</b></label><input type="range" id="c-price" min="30" max="300" step="5" value="90"></div>
+        <div class="ctl"><label for="c-loss">Demandes sans suite aujourd'hui <b id="v-loss">60 %</b></label><input type="range" id="c-loss" min="10" max="90" step="5" value="60"><small>Hypothèse de départ — à ajuster.</small></div>
+        <div class="ctl"><label for="c-rec">Part de ces demandes récupérée grâce au suivi <b id="v-rec">20 %</b></label><input type="range" id="c-rec" min="5" max="60" step="5" value="20"><small>Hypothèse prudente, sans garantie de résultat.</small></div>
+        <div class="results">
+          <div class="loss-row"><span>Demandes sans suite / mois</span><span class="loss-val" id="o-lost">5</span></div>
+          <div class="loss-row"><span>Rendez-vous récupérés / mois</span><span class="loss-val" id="o-rec">1</span></div>
+          <div class="loss-row"><span>Chiffre d'affaires récupéré / mois</span><span class="loss-val" id="o-month">90 €</span></div>
+          <div class="loss-total">
+            <div class="amount" id="o-year">1 080 €</div>
+            <div class="label">de chiffre d'affaires récupéré par an (estimation)</div>
+          </div>
+          <p class="disclaimer" id="o-payback">Il suffit de récupérer 3 séances pour rentabiliser l'installation à 199 €.</p>
         </div>
       </div>
     </div>
@@ -245,28 +316,63 @@ footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;
   </div>
 </section>
 
+<!-- SIMULATEUR -->
+<section class="alt" id="simulateur">
+  <div class="container">
+    <div class="section-tag">Essayez-le</div>
+    <h2 class="section-title">Voyez la séquence que recevrait votre prospect</h2>
+    <p class="section-desc" style="margin-bottom:0">Renseignez quelques informations : les trois messages se génèrent sous vos yeux. Copiez-les si vous voulez les utiliser tels quels.</p>
+    <div class="sim">
+      <form class="sim-form" onsubmit="return false" aria-label="Paramètres du simulateur">
+        <div class="field"><label for="s-prospect">Prénom du prospect</label><input id="s-prospect" value="Camille" maxlength="30" autocomplete="off"></div>
+        <div class="field"><label for="s-me">Votre prénom</label><input id="s-me" value="Sophie" maxlength="30" autocomplete="off"></div>
+        <div class="field"><label for="s-act">Votre activité</label>
+          <select id="s-act">
+            <option value="en coaching de vie">Coaching de vie</option>
+            <option value="en coaching business">Coaching business</option>
+            <option value="en thérapie">Thérapie</option>
+            <option value="en sophrologie">Sophrologie</option>
+            <option value="en hypnothérapie">Hypnothérapie</option>
+            <option value="en accompagnement bien-être">Bien-être</option>
+          </select></div>
+        <div class="field"><label for="s-link">Lien de réservation</label><input id="s-link" value="https://votre-lien-de-reservation" maxlength="120" autocomplete="off"></div>
+        <div class="field"><span class="sr-only" id="tone-l">Ton des messages</span>
+          <label aria-hidden="true">Ton des messages</label>
+          <div class="tone" role="group" aria-labelledby="tone-l">
+            <button type="button" id="t-warm" aria-pressed="true">Chaleureux</button>
+            <button type="button" id="t-pro" aria-pressed="false">Sobre</button>
+          </div></div>
+      </form>
+      <div>
+        <div class="timeline" id="timeline" aria-live="polite"></div>
+        <p class="sim-note">Exemple généré dans votre navigateur : rien n'est envoyé ni enregistré. Sur votre système réel, les trois messages sont rédigés avec vous, dans votre style.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT YOU GET -->
-<section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section>
   <div class="container">
     <div class="section-tag">Ce que vous obtenez</div>
     <h2 class="section-title">Tout est inclus dans les 199€</h2>
     <div class="features">
-      <div class="feature"><div class="feature-icon">⚡</div><h3>Système installé en 48h</h3><p>Connecté à votre Gmail, Calendly et formulaire existants. Rien à changer de votre côté.</p></div>
-      <div class="feature"><div class="feature-icon">✍️</div><h3>Emails écrits avec vous</h3><p>3 messages rédigés dans votre ton, votre style, votre chaleur. Vos prospects ne savent pas que c'est automatique.</p></div>
-      <div class="feature"><div class="feature-icon">📊</div><h3>Tableau de suivi Notion</h3><p>Vous voyez en temps réel qui est dans le pipeline, qui a été relancé, qui a pris RDV.</p></div>
-      <div class="feature"><div class="feature-icon">🔔</div><h3>Confirmation + rappel RDV</h3><p>Chaque prospect qui réserve reçoit une confirmation immédiate et un rappel automatique la veille.</p></div>
-      <div class="feature"><div class="feature-icon">🛡️</div><h3>Support 30 jours inclus</h3><p>Si quelque chose ne fonctionne pas, je réponds et je corrige. Sans frais supplémentaires.</p></div>
-      <div class="feature"><div class="feature-icon">0€</div><h3>Pas d'abonnement</h3><p>Vous payez une seule fois. Le système fonctionne ensuite indéfiniment sur vos outils gratuits.</p></div>
+      <div class="feature"><div class="feature-icon"><svg class="ico" aria-hidden="true"><use href="#i-zap"/></svg></div><h3>Système installé en 48h</h3><p>Connecté à votre Gmail, Calendly et formulaire existants. Rien à changer de votre côté.</p></div>
+      <div class="feature"><div class="feature-icon"><svg class="ico" aria-hidden="true"><use href="#i-pen"/></svg></div><h3>Emails écrits avec vous</h3><p>3 messages rédigés dans votre ton, votre style, votre chaleur. Vos prospects ne savent pas que c'est automatique.</p></div>
+      <div class="feature"><div class="feature-icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div><h3>Tableau de suivi Notion</h3><p>Vous voyez en temps réel qui est dans le pipeline, qui a été relancé, qui a pris RDV.</p></div>
+      <div class="feature"><div class="feature-icon"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></div><h3>Confirmation + rappel RDV</h3><p>Chaque prospect qui réserve reçoit une confirmation immédiate et un rappel automatique la veille.</p></div>
+      <div class="feature"><div class="feature-icon"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Support 30 jours inclus</h3><p>Si quelque chose ne fonctionne pas, je réponds et je corrige. Sans frais supplémentaires.</p></div>
+      <div class="feature"><div class="feature-icon" aria-hidden="true">0 €</div><h3>Pas d'abonnement</h3><p>Vous payez une seule fois. Le système fonctionne ensuite indéfiniment sur vos outils gratuits.</p></div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="pricing" id="pricing">
+<section class="alt" id="pricing">
   <div class="container">
     <div class="section-tag" style="text-align:center">Tarif</div>
     <h2 class="section-title" style="text-align:center">Simple. Une seule fois.</h2>
-    <p class="section-desc" style="text-align:center;max-width:100%">Rentabilisé dès 1 client supplémentaire converti.</p>
+    <p class="section-desc" style="text-align:center;max-width:100%">Rentabilisé dès que quelques séances sont récupérées — calculez-le plus haut avec vos chiffres.</p>
     <div class="pricing-card">
       <div class="pricing-badge">✦ Offre de lancement</div>
       <div class="pricing-name">RelanceAuto — Installation complète</div>
@@ -293,14 +399,30 @@ footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;
     <div class="section-tag">Pour qui</div>
     <h2 class="section-title">Fait pour vous si vous êtes…</h2>
     <div class="who-grid">
-      <div class="who-card"><div class="who-icon">🧭</div>Coach de vie</div>
-      <div class="who-card"><div class="who-icon">💼</div>Coach business</div>
-      <div class="who-card"><div class="who-icon">🌿</div>Thérapeute</div>
-      <div class="who-card"><div class="who-icon">🌬️</div>Sophrologue</div>
-      <div class="who-card"><div class="who-icon">🔮</div>Hypnothérapeute</div>
-      <div class="who-card"><div class="who-icon">🌸</div>Praticien bien-être</div>
+      <div class="who-card"><svg class="ico" aria-hidden="true"><use href="#i-compass"/></svg>Coach de vie</div>
+      <div class="who-card"><svg class="ico" aria-hidden="true"><use href="#i-briefcase"/></svg>Coach business</div>
+      <div class="who-card"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>Thérapeute</div>
+      <div class="who-card"><svg class="ico" aria-hidden="true"><use href="#i-wind"/></svg>Sophrologue</div>
+      <div class="who-card"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg>Hypnothérapeute</div>
+      <div class="who-card"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg>Praticien bien-être</div>
     </div>
     <p style="margin-top:var(--s6);color:var(--muted);font-size:var(--t-sm)">Vous recevez au moins 3 demandes de contact par mois et vous savez que vous en perdez.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt">
+  <div class="container">
+    <div class="section-tag">Questions fréquentes</div>
+    <h2 class="section-title">Avant de me contacter</h2>
+    <div class="faq">
+      <details><summary>Combien de temps pour la mise en place ?</summary><p>48 heures : installation et tests complets sont inclus.</p></details>
+      <details><summary>Y a-t-il un abonnement ?</summary><p>Non. Le paiement est unique (199 €) et le système fonctionne ensuite sur vos outils gratuits.</p></details>
+      <details><summary>Avec quels outils ça fonctionne ?</summary><p>Avec votre Gmail, votre formulaire de contact et votre agenda de réservation, avec un tableau de suivi dans Google Sheets ou Notion. Rien à changer de votre côté.</p></details>
+      <details><summary>Qui écrit les messages ?</summary><p>Les trois messages (réponse, relance à J+2, dernière relance à J+5) sont rédigés avec vous, dans votre ton. Le simulateur ci-dessus donne une idée de leur forme.</p></details>
+      <details><summary>Que se passe-t-il quand un rendez-vous est pris ?</summary><p>Les relances s'arrêtent automatiquement. Le prospect reçoit une confirmation, puis un rappel la veille.</p></details>
+      <details><summary>Et si quelque chose ne fonctionne pas ?</summary><p>Le support technique est inclus pendant 30 jours : je corrige sans frais supplémentaires.</p></details>
+    </div>
   </div>
 </section>
 
@@ -310,37 +432,119 @@ footer{border-top:1px solid var(--border);padding:var(--s8) 0;text-align:center;
     <h2>Prêt à arrêter de perdre des clients ?</h2>
     <p>15 minutes d'appel pour calculer ensemble ce que vous perdez chaque mois.</p>
     <a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" class="btn-white">Réserver mon appel gratuit →</a>
-    <p style="color:rgba(255,255,255,.6);font-size:var(--t-xs);margin-top:var(--s4)">199€ · Installation 48h · Pas d'abonnement</p>
+    <p style="color:rgba(255,255,255,.75);font-size:var(--t-xs);margin-top:var(--s4)">199€ · Installation 48h · Pas d'abonnement</p>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="container">
-    <p>RelanceAuto — Système de relance automatique pour coachs & thérapeutes · <a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" style="color:var(--primary)">Prendre contact</a></p>
+    <p>RelanceAuto — Système de relance automatique pour coachs &amp; thérapeutes · <a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" style="color:var(--primary);text-decoration:underline">Prendre contact</a></p>
   </div>
 </footer>
 
+<a href="https://cal.com/victor-francis-itoua-mveng-feg0dn/15min" class="sticky-cta" id="sticky">Réserver un appel gratuit de 15 min</a>
+
 <script>
-// Slider calcul perte
-const slider = document.getElementById('req-slider');
-const reqVal = document.getElementById('req-val');
-const lostVal = document.getElementById('lost-val');
-const totalLoss = document.getElementById('total-loss');
-const yearlyLoss = document.getElementById('yearly-loss');
-const price = 90;
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var eur = function (n) { return Math.round(n).toLocaleString('fr-FR') + ' €'; };
 
-function update() {
-  const req = parseInt(slider.value);
-  const lost = Math.round(req * 0.6);
-  const monthly = lost * price;
-  const yearly = monthly * 12;
-  reqVal.textContent = req;
-  lostVal.textContent = lost;
-  totalLoss.innerHTML = '<strong>' + monthly + '€</strong>';
-  yearlyLoss.textContent = yearly.toLocaleString('fr-FR') + '€';
-}
+  /* ── Calculateur de rentabilité ── */
+  var SETUP = 199;
+  function calc() {
+    var req = +$('c-req').value, price = +$('c-price').value;
+    var loss = +$('c-loss').value / 100, rec = +$('c-rec').value / 100;
+    var lost = req * loss, recovered = lost * rec;
+    var month = recovered * price;
+    $('v-req').textContent = req;
+    $('v-price').textContent = price + ' €';
+    $('v-loss').textContent = Math.round(loss * 100) + ' %';
+    $('v-rec').textContent = Math.round(rec * 100) + ' %';
+    $('o-lost').textContent = (Math.round(lost * 10) / 10).toString().replace('.', ',');
+    $('o-rec').textContent = (Math.round(recovered * 10) / 10).toString().replace('.', ',');
+    $('o-month').textContent = eur(month);
+    $('o-year').textContent = eur(month * 12);
+    var sessions = Math.ceil(SETUP / price);
+    $('o-payback').textContent = 'Il suffit de récupérer ' + sessions + ' séance' + (sessions > 1 ? 's' : '') +
+      ' pour rentabiliser l’installation à ' + SETUP + ' €.';
+  }
+  ['c-req', 'c-price', 'c-loss', 'c-rec'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  calc();
 
-slider && slider.addEventListener('input', update);
+  /* ── Simulateur de séquence ── */
+  var tone = 'warm';
+  function clean(v, fallback) { v = (v || '').trim(); return v || fallback; }
+  function build() {
+    var p = clean($('s-prospect').value, 'Camille');
+    var me = clean($('s-me').value, 'Sophie');
+    var act = $('s-act').value;
+    var link = clean($('s-link').value, 'https://votre-lien-de-reservation');
+    var warm = tone === 'warm';
+    return [
+      {
+        when: 'Immédiatement · moins de 5 min', subject: 'Votre message — ' + me,
+        body: warm
+          ? 'Bonjour ' + p + ',\n\nMerci pour votre message : faire le premier pas n’est jamais anodin, et je suis touché(e) de votre confiance. Je suis en séance une grande partie de la journée, mais je tenais à vous répondre tout de suite.\n\nPour échanger sur ce que vous cherchez ' + act + ', le plus simple est de choisir le créneau qui vous convient ici : ' + link + '\n\nÀ très vite,\n' + me
+          : 'Bonjour ' + p + ',\n\nMerci pour votre message. Je suis en séance et je reviens vers vous très vite ; en attendant, vous pouvez réserver directement un échange ' + act + ' ici : ' + link + '\n\nCordialement,\n' + me
+      },
+      {
+        when: 'J+2 · sans réponse', subject: 'Un petit mot pour vous',
+        body: warm
+          ? 'Bonjour ' + p + ',\n\nJe me permets un petit mot pour m’assurer que mon message précédent vous est bien parvenu. Si le moment n’est pas idéal, aucun souci, prenez le temps qu’il vous faut.\n\nSi vous souhaitez avancer, vous pouvez réserver ici : ' + link + '\n\nBelle journée,\n' + me
+          : 'Bonjour ' + p + ',\n\nJe reviens vers vous au sujet de mon message précédent. Si vous souhaitez un échange, le lien de réservation est ici : ' + link + '\n\nCordialement,\n' + me
+      },
+      {
+        when: 'J+5 · dernière relance', subject: 'Ma porte reste ouverte',
+        body: warm
+          ? 'Bonjour ' + p + ',\n\nCe sera mon dernier message : je ne voudrais surtout pas vous importuner. Si un accompagnement ' + act + ' vous fait toujours envie, ma porte reste ouverte, quand vous le souhaitez : ' + link + '\n\nPrenez soin de vous,\n' + me
+          : 'Bonjour ' + p + ',\n\nCeci est mon dernier message. Si un accompagnement ' + act + ' vous intéresse à l’avenir, vous pouvez réserver à tout moment : ' + link + '\n\nCordialement,\n' + me
+      }
+    ];
+  }
+  function render() {
+    var box = $('timeline');
+    box.textContent = '';
+    build().forEach(function (m) {
+      var card = document.createElement('article'); card.className = 'msg';
+      var head = document.createElement('div'); head.className = 'msg-head';
+      var l = document.createElement('div');
+      var w = document.createElement('div'); w.className = 'msg-when'; w.textContent = m.when;
+      var s = document.createElement('div'); s.className = 'msg-subject'; s.textContent = 'Objet : ' + m.subject;
+      l.appendChild(w); l.appendChild(s);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'copy'; b.textContent = 'Copier';
+      b.addEventListener('click', function () {
+        var text = m.body;
+        var done = function () { b.textContent = 'Copié ✓'; setTimeout(function () { b.textContent = 'Copier'; }, 1600); };
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, done); }
+        else { var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done(); }
+      });
+      head.appendChild(l); head.appendChild(b);
+      var body = document.createElement('div'); body.className = 'msg-body'; body.textContent = m.body;
+      card.appendChild(head); card.appendChild(body); box.appendChild(card);
+    });
+  }
+  ['s-prospect', 's-me', 's-act', 's-link'].forEach(function (id) { $(id).addEventListener('input', render); });
+  function setTone(t) {
+    tone = t;
+    $('t-warm').setAttribute('aria-pressed', String(t === 'warm'));
+    $('t-pro').setAttribute('aria-pressed', String(t === 'pro'));
+    render();
+  }
+  $('t-warm').addEventListener('click', function () { setTone('warm'); });
+  $('t-pro').addEventListener('click', function () { setTone('pro'); });
+  render();
+
+  /* ── CTA fixe (mobile) : visible après le hero, masqué sur la section tarif ── */
+  var sticky = $('sticky'), pricing = $('pricing');
+  function onScroll() {
+    var y = window.scrollY, pr = pricing.getBoundingClientRect();
+    var overPricing = pr.top < window.innerHeight && pr.bottom > 0;
+    sticky.classList.toggle('show', y > 600 && !overPricing);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 </script>
 </body>
 </html>
